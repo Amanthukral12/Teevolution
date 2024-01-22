@@ -4,7 +4,7 @@ import Product from "../components/Product";
 
 const ProductList = () => {
   return (
-    <section className="px-[3rem]">
+    <section className="px-[3rem] pb-[2rem]">
       <h1 className="text-center py-20">New Arrivals</h1>
       <div className="flex flex-wrap justify-evenly">
         {products.map((product) => (
