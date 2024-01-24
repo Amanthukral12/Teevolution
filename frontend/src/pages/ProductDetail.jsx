@@ -1,11 +1,20 @@
 import Rating from "../components/Rating";
-import products from "../products";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const ProductDetail = () => {
+  const [product, setProduct] = useState({});
   const { id: productId } = useParams();
-  const product = products.find((p) => p._id === productId);
-  console.log(product);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${productId}`);
+      setProduct(data);
+    };
+    fetchProduct();
+  }, [productId]);
+
   return (
     <>
       <section className="flex flex-col md:flex-row px-[3rem] mt-12">
