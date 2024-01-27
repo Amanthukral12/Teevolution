@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: "1",
     name: "Black Tshirt",
     image: "/images/black tshirt.webp",
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: "2",
     name: "White Tshirt",
     image: "/images/white tshirt.webp",
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 14,
   },
   {
-    _id: "3",
     name: "Printed Tshirt",
     image: "/images/printed.webp",
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 16,
   },
   {
-    _id: "4",
     name: "Printed Tshirt",
     image: "/images/printed2.webp",
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 16,
   },
   {
-    _id: "5",
     name: "Printed Tshirt",
     image: "/images/white printed.webp",
     description:
@@ -65,7 +60,6 @@ const products = [
     numReviews: 16,
   },
   {
-    _id: "6",
     name: "Plain Tshirt Combo Pack(6 Tshirts)",
     image: "/images/combo1.webp",
     description:
