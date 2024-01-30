@@ -2,6 +2,7 @@ import Rating from "../components/Rating";
 
 import { useParams } from "react-router-dom";
 import { useGetProductDetailsQuery } from "../slices/productApiSlice";
+import Loader from "../components/Loader";
 
 const ProductDetail = () => {
   const { id: productId } = useParams();
@@ -16,7 +17,7 @@ const ProductDetail = () => {
     <>
       <section className="flex flex-col md:flex-row px-[3rem] mt-12">
         {isLoading ? (
-          <h2>Loading...</h2>
+          <Loader />
         ) : error ? (
           error?.data?.message || error.error
         ) : (
