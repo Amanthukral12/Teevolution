@@ -11,7 +11,9 @@ const ProductList = () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant="Danger">error?.data?.message || error.error</Message>
+        <Message variant="Danger">
+          {error?.data?.message || error.error}
+        </Message>
       ) : (
         <>
           <h1 className="text-center py-20">New Arrivals</h1>
