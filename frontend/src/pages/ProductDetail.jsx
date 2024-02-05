@@ -1,17 +1,29 @@
 import Rating from "../components/Rating";
-
-import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
 import { useGetProductDetailsQuery } from "../slices/productApiSlice";
 import Loader from "../components/Loader";
+import { addToCart } from "../slices/cartSlice";
+import { useState } from "react";
 
 const ProductDetail = () => {
   const { id: productId } = useParams();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [qty, setQty] = useState(1);
 
   const {
     data: product,
     isLoading,
     error,
   } = useGetProductDetailsQuery(productId);
+
+  const addToCartHandler = () => {
+    dispatch(addToCart({ ...product, qty }));
+    navigate("/cart");
+  };
 
   return (
     <>
@@ -46,8 +58,25 @@ const ProductDetail = () => {
                   : "Out of Stock"}
               </p>
 
+              {product.countInStock > 0 && (
+                <div>
+                  <p>Quantity</p>
+                  <select
+                    value={qty}
+                    onChange={(e) => setQty(Number(e.target.value))}
+                  >
+                    {[...Array(product.countInStock).keys()].map((x) => (
+                      <option key={x + 1} value={x + 1}>
+                        {x + 1}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+
               <button
                 disabled={product.countInStock === 0}
+                onClick={addToCartHandler}
                 className="bg-black text-white py-4 px-40"
               >
                 Add to Cart
