@@ -5,6 +5,7 @@ import { useGetProductDetailsQuery } from "../slices/productApiSlice";
 import Loader from "../components/Loader";
 import { addToCart } from "../slices/cartSlice";
 import { useState } from "react";
+import Message from "../components/Message";
 
 const ProductDetail = () => {
   const { id: productId } = useParams();
@@ -31,7 +32,9 @@ const ProductDetail = () => {
         {isLoading ? (
           <Loader />
         ) : error ? (
-          error?.data?.message || error.error
+          <Message variant="Danger">
+            {error?.data?.message || error.error}
+          </Message>
         ) : (
           <>
             <img

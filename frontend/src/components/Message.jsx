@@ -2,24 +2,27 @@ import { useEffect, useState } from "react";
 import propTypes from "prop-types";
 
 const Message = ({ variant, children }) => {
-  const [textColor, setTextColor] = useState("");
+  const [effect, setEffect] = useState("");
 
   useEffect(() => {
     if (variant === "Danger") {
-      setTextColor("red");
+      setEffect(
+        "p-4 my-4 text-center text-s rounded-lg bg-red-300 text-red-800"
+      );
     } else if (variant === "Success") {
-      setTextColor("green");
+      setEffect(
+        "p-4 my-4 text-s text-center rounded-lg bg-green-300 text-green-800"
+      );
     } else {
-      setTextColor("blue");
+      setEffect(
+        "p-4 my-4 text-s text-center rounded-lg bg-blue-300 text-blue-800"
+      );
     }
   }, [variant]);
 
   return (
-    <div
-      className={`p-4 mb-4 text-s rounded-lg bg-${textColor}-300 text-${textColor}-800`}
-      role="alert"
-    >
-      {children}
+    <div className={effect}>
+      <p>{children}</p>
     </div>
   );
 };
