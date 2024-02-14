@@ -20,9 +20,9 @@ const Headers = () => {
               </div>
             )}
           </Link>
-          <span className="flex items-center">
+          <Link to="/login" className="flex items-center">
             <FaUser className="text-md mr-1" /> <p>My Account</p>
-          </span>
+          </Link>
         </div>
       </div>
       <div className="flex justify-center pt-2">
