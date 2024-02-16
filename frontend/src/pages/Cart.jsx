@@ -18,11 +18,17 @@ const Cart = () => {
     dispatch(removeCartItems(id));
   };
 
+  const checkoutHandler = () => {
+    navigate("/login?redirect=/shipping");
+  };
+
   return (
     <>
       <p>Shopping Cart</p>
       {cartItems.length === 0 ? (
-        <Message variant="Info">Cart is empty. Please add some items</Message>
+        <Message variant="Info">
+          Cart is empty. Please add some items <Link to="/">Go Back</Link>
+        </Message>
       ) : (
         <section className="flex flex-col md:flex-row">
           {cartItems.map((item) => (
@@ -54,7 +60,11 @@ const Cart = () => {
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
                 .toFixed(2)}
             </p>
-            <button type="button" disabled={cartItems.length === 0}>
+            <button
+              type="button"
+              disabled={cartItems.length === 0}
+              onClick={checkoutHandler}
+            >
               Proceed to Checkout
             </button>
           </div>

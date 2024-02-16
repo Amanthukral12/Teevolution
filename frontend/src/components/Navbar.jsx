@@ -1,9 +1,27 @@
 import { FaShoppingCart, FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useLogoutMutation } from "../slices/userApiSlice";
+import { logout } from "../slices/authSlice";
+
 const Headers = () => {
   const { cartItems } = useSelector((state) => state.cart);
+  const { userInfo } = useSelector((state) => state.auth);
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [logoutApiCall] = useLogoutMutation();
+
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <header className="px-[3rem] py-4">
       <div className="flex justify-between items-center pb-2">
@@ -20,9 +38,41 @@ const Headers = () => {
               </div>
             )}
           </Link>
-          <Link to="/login" className="flex items-center">
-            <FaUser className="text-md mr-1" /> <p>My Account</p>
-          </Link>
+          <div className="flex items-center">
+            {userInfo ? (
+              <ul className="w-full flex items-center">
+                <FaUser className="text-lg mr-1 " />
+                <li className="group  relative dropdown cursor-pointer text-base tracking-wide">
+                  <a>{userInfo.name}</a>
+                  <div className="group-hover:block dropdown-menu absolute hidden h-auto">
+                    <ul className="top-0 w-48 bg-white shadow px-2 py-8">
+                      <li className="py-1">
+                        <Link
+                          className="block text-base  cursor-pointer"
+                          to="/profile"
+                        >
+                          Profile
+                        </Link>
+                      </li>
+                      <li className="py-1">
+                        <p
+                          className="block text-base cursor-pointer"
+                          onClick={logoutHandler}
+                        >
+                          Logout
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            ) : (
+              <>
+                <FaUser className="text-lg mr-1 " />
+                <Link to="/login">Signin</Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
       <div className="flex justify-center pt-2">

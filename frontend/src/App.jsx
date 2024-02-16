@@ -1,8 +1,9 @@
-import React from "react";
 import PropTypes from "prop-types";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Outlet } from "react-router-dom";
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
       <Navbar />
       <Outlet />
       <Footer />
+      <ToastContainer />
     </>
   );
 };
