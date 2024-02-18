@@ -8,7 +8,12 @@ export const updateCart = (state) => {
   );
 
   //Calculate shipping price
-  state.shippingPrice = addDecimals(state.itemsPrice > 600 ? 0 : 50);
+  if (state.itemsPrice === "0.00") {
+    state.shippingPrice = 0;
+  } else {
+    state.shippingPrice = addDecimals(state.itemsPrice > 600 ? 0 : 50);
+  }
+
   //Calculate tax price
 
   state.taxPrice = addDecimals(Number(0.18 * state.itemsPrice));
