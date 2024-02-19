@@ -3,6 +3,8 @@ import FormContainer from "../components/FormContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { saveShippingAddress } from "../slices/cartSlice";
+import CheckoutSteps from "../components/CheckoutSteps";
+
 const Shipping = () => {
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
@@ -23,6 +25,7 @@ const Shipping = () => {
   };
   return (
     <FormContainer>
+      <CheckoutSteps step2 />
       <h1>Shipping</h1>
       <form className="flex flex-col" onSubmit={submitHandler}>
         <label htmlFor="address">Address</label>
