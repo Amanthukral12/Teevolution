@@ -118,7 +118,7 @@ const PlaceOrder = () => {
                 disabled={cart.cartItems.length === 0}
                 onClick={placeOrderHandler}
               >
-                PLace Order
+                Place Order
               </button>
               {isLoading && <Loader />}
             </div>

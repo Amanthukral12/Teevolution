@@ -38,11 +38,11 @@ const Headers = () => {
               </div>
             )}
           </Link>
-          <div className="flex items-center">
+          <div className="flex items-center mr-3">
             {userInfo ? (
               <ul className="w-full flex items-center">
                 <FaUser className="text-lg mr-1 " />
-                <li className="group  relative dropdown cursor-pointer text-base tracking-wide">
+                <li className="group  relative dropdown cursor-pointer text-base tracking-wide w-full">
                   <a>{userInfo.name}</a>
                   <div className="group-hover:block dropdown-menu absolute hidden h-auto">
                     <ul className="top-0 w-48 bg-white shadow px-2 py-8">
@@ -71,6 +71,43 @@ const Headers = () => {
                 <FaUser className="text-lg mr-1 " />
                 <Link to="/login">Signin</Link>
               </>
+            )}
+          </div>
+          <div className="flex items-center">
+            {userInfo && userInfo.isAdmin && (
+              <ul className="w-full flex items-center">
+                <li className="group relative dropdown cursor-pointer text-base tracking-wide">
+                  <a>Admin</a>
+                  <div className="group-hover:block dropdown-menu absolute hidden h-auto">
+                    <ul className="top-0 w-48 bg-white shadow px-2 py-8">
+                      <li className="py-1">
+                        <Link
+                          className="block text-base  cursor-pointer"
+                          to="/admin/orderlist"
+                        >
+                          Orders
+                        </Link>
+                      </li>
+                      <li className="py-1">
+                        <Link
+                          className="block text-base  cursor-pointer"
+                          to="/admin/userlist"
+                        >
+                          Users
+                        </Link>
+                      </li>
+                      <li className="py-1">
+                        <Link
+                          className="block text-base  cursor-pointer"
+                          to="/admin/productslist"
+                        >
+                          Products
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
             )}
           </div>
         </div>
