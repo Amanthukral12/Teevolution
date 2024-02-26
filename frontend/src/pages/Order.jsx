@@ -5,6 +5,7 @@ import {
   useGetOrderDetailsQuery,
   usePayOrderMutation,
   useGetPayPalClientIdQuery,
+  useDeliverOrderMutation,
 } from "../slices/ordersApiSlice";
 import { toast } from "react-toastify";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
@@ -20,6 +21,9 @@ const Order = () => {
   } = useGetOrderDetailsQuery(orderId);
 
   const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation();
+
+  const [deliverOrder, { isLoading: loadingDeliver }] =
+    useDeliverOrderMutation();
 
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
@@ -54,11 +58,6 @@ const Order = () => {
     }
   }, [errorPayPal, loadingPayPal, order, paypal, paypalDispatch]);
 
-  const onApproveTest = async () => {
-    await payOrder({ orderId, details: { payer: {} } });
-    refetch();
-    toast.success("Payment successful");
-  };
   const onApprove = (data, actions) => {
     return actions.order.capture().then(async function (details) {
       try {
@@ -90,6 +89,16 @@ const Order = () => {
       });
   };
 
+  const deliverOrderHandler = async () => {
+    try {
+      await deliverOrder(orderId);
+      refetch();
+      toast.success("Order Delivered");
+    } catch (err) {
+      toast.error(err?.data?.message || err.message);
+    }
+  };
+
   return isLoading ? (
     <Loader />
   ) : error ? (
@@ -113,7 +122,7 @@ const Order = () => {
           </p>
           {order.isDelivered ? (
             <Message variant="Success">
-              Delivered on {order.deliveredAt}
+              Delivered on {order.deliveredAt.substring(0, 10)}
             </Message>
           ) : (
             <Message variant="Danger">Not Delivered</Message>
@@ -122,7 +131,9 @@ const Order = () => {
             <strong>Method: </strong> {order.paymentMethod}
           </p>
           {order.isPaid ? (
-            <Message variant="Success">Paid on {order.paidAt}</Message>
+            <Message variant="Success">
+              Paid on {order.paidAt.substring(0, 10)}
+            </Message>
           ) : (
             <Message variant="Danger">Not Paid</Message>
           )}
@@ -175,9 +186,6 @@ const Order = () => {
                   <Loader />
                 ) : (
                   <div>
-                    {/* <button onClick={onApproveTest} className="mb-3">
-                      Test Pay Order
-                    </button> */}
                     <div>
                       <PayPalButtons
                         createOrder={createOrder}
@@ -189,6 +197,17 @@ const Order = () => {
                 )}
               </div>
             )}
+            {loadingDeliver && <Loader />}
+            {userInfo &&
+              userInfo.isAdmin &&
+              order.isPaid &&
+              !order.isDelivered && (
+                <div>
+                  <button type="button" onClick={deliverOrderHandler}>
+                    Mark as Delivered
+                  </button>
+                </div>
+              )}
           </div>
         </div>
       </div>
