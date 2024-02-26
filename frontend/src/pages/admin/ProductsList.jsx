@@ -2,9 +2,27 @@ import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useGetProductsQuery } from "../../slices/productApiSlice";
+import {
+  useGetProductsQuery,
+  useCreateProductMutation,
+} from "../../slices/productApiSlice";
+import { toast } from "react-toastify";
 const ProductsList = () => {
-  const { data: products, isLoading, error } = useGetProductsQuery();
+  const { data: products, isLoading, error, refetch } = useGetProductsQuery();
+
+  const [createProduct, { isLoading: loadingCreate }] =
+    useCreateProductMutation();
+
+  const createProductHandler = async () => {
+    if (window.confirm("Are you sure you want to create a new Product?")) {
+      try {
+        await createProduct();
+        refetch();
+      } catch (err) {
+        toast.error(err?.data?.message || err.message);
+      }
+    }
+  };
 
   const deleteHandler = (id) => {
     console.log("delete", id);
@@ -15,11 +33,12 @@ const ProductsList = () => {
       <div className="flex mx-20 justify-between items-center">
         <h1>Products</h1>
         <div>
-          <button className="flex items-center">
+          <button className="flex items-center" onClick={createProductHandler}>
             <FaEdit /> Create Product
           </button>
         </div>
       </div>
+      {loadingCreate && <Loader />}
       {isLoading ? (
         <Loader />
       ) : error ? (
