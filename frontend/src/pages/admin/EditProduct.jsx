@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import {
   useGetProductDetailsQuery,
   useUpdateProductMutation,
+  useUploadProductImageMutation,
 } from "../../slices/productApiSlice";
 
 const EditProduct = () => {
@@ -28,6 +29,8 @@ const EditProduct = () => {
 
   const [updateProduct, { isLoading: loadingUpdate }] =
     useUpdateProductMutation();
+  const [uploadProductImage, { isLoading: loadingUpload }] =
+    useUploadProductImageMutation();
 
   const navigate = useNavigate();
 
@@ -62,6 +65,19 @@ const EditProduct = () => {
     } else {
       toast.success("Product Updated");
       navigate("/admin/productslist");
+    }
+  };
+
+  const uploadFileHandler = async (e) => {
+    const formData = new FormData();
+    formData.append("image", e.target.files[0]);
+    try {
+      const result = await uploadProductImage(formData).unwrap();
+      toast.success(result.message);
+      console.log(result);
+      setImage(result.image);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
     }
   };
 
@@ -100,10 +116,18 @@ const EditProduct = () => {
             />
             <label htmlFor="image">Image </label>
             <input
+              type="text"
+              name="image"
+              className="my-2 border border-black"
+              placeholder="Enter image url"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            />
+            <input
               type="file"
               name="image"
               className="my-2 border border-black"
-              onChange={(e) => setImage(e.target.value)}
+              onChange={uploadFileHandler}
             />
             <label htmlFor="brand">Brand </label>
             <input

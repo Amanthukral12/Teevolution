@@ -24,12 +24,15 @@ function checkFileType(file, cb) {
   if (extname && mimetype) {
     return cb(null, true);
   } else {
-    cb("Images only!");
+    cb(new Error("file type is not allowed"));
   }
 }
 
 const upload = multer({
   storage,
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  },
 });
 
 router.post("/", upload.single("image"), (req, res) => {
