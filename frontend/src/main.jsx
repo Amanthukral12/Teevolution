@@ -27,6 +27,7 @@ import Profile from "./pages/Profile.jsx";
 import AdminRoute from "./components/AdminRoute.jsx";
 import OrderList from "./pages/admin/OrderList.jsx";
 import ProductsList from "./pages/admin/ProductsList.jsx";
+import EditProduct from "./pages/admin/EditProduct.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -48,6 +49,7 @@ const router = createBrowserRouter(
       <Route path="" element={<AdminRoute />}>
         <Route path="/admin/orderlist" element={<OrderList />} />
         <Route path="/admin/productslist" element={<ProductsList />} />
+        <Route path="/admin/product/:id/edit" element={<EditProduct />} />
       </Route>
     </Route>
   )
