@@ -3,17 +3,29 @@ import Loader from "../../components/Loader";
 import { FaTimes, FaTrash, FaEdit, FaCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useGetUsersQuery } from "../../slices/userApiSlice";
+import { useDeleteUserMutation } from "../../slices/userApiSlice";
+import { toast } from "react-toastify";
 
 const UserList = () => {
   const { data: users, refetch, isLoading, error } = useGetUsersQuery();
+  const [deleteUser, { isLoading: loadingDelete }] = useDeleteUserMutation();
 
-  const deleteHandler = (id) => {
-    console.log("Delete", id);
+  const deleteHandler = async (id) => {
+    if (window.confirm("Are you sure to delete the User?")) {
+      try {
+        await deleteUser(id).unwrap();
+        toast.success("User Deleted!");
+        refetch();
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
+    }
   };
 
   return (
     <>
       <h1>Users</h1>
+      {loadingDelete && <Loader />}
       {isLoading ? (
         <Loader />
       ) : error ? (

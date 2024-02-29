@@ -29,7 +29,7 @@ const ProductsList = () => {
   };
 
   const deleteHandler = async (id) => {
-    if (window.confirm("Are you sure?")) {
+    if (window.confirm("Are you sure you want to delete the product?")) {
       try {
         await deleteProduct(id);
         toast.success("Product Deleted");
