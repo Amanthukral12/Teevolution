@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Form, Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import FormContainer from "../../components/FormContainer";
@@ -13,7 +13,7 @@ import {
 const EditProduct = () => {
   const { id: productId } = useParams();
   const [name, setName] = useState("");
-  const [price, setPrice] = useState();
+  const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
@@ -48,23 +48,23 @@ const EditProduct = () => {
 
   const updateProductHandler = async (e) => {
     e.preventDefault();
-    const updatedProduct = {
-      _id: productId,
-      name,
-      price,
-      image,
-      brand,
-      category,
-      countInStock,
-      description,
-    };
-    const result = await updateProduct(updatedProduct);
-    refetch();
-    if (result.error) {
-      toast.error(result.error);
-    } else {
+    try {
+      const updatedProduct = {
+        _id: productId,
+        name,
+        price,
+        image,
+        brand,
+        category,
+        countInStock,
+        description,
+      };
+      await updateProduct(updatedProduct).unwrap();
       toast.success("Product Updated");
+      refetch();
       navigate("/admin/productslist");
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
     }
   };
 
@@ -74,7 +74,6 @@ const EditProduct = () => {
     try {
       const result = await uploadProductImage(formData).unwrap();
       toast.success(result.message);
-      console.log(result);
       setImage(result.image);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
