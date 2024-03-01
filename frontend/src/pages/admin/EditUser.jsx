@@ -28,14 +28,21 @@ const EditUser = () => {
   useEffect(() => {
     if (user) {
       setName(user.name);
-      setEmail(user.price);
+      setEmail(user.email);
       setIsAdmin(user.isAdmin);
     }
   }, [user]);
 
   const updateUserHandler = async (e) => {
     e.preventDefault();
-    console.log("update");
+    try {
+      await updateUser({ userId, name, email, isAdmin }).unwrap();
+      toast.success("User updated successfully");
+      refetch();
+      navigate("/admin/userlist");
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
   };
 
   return (
@@ -75,14 +82,15 @@ const EditUser = () => {
               <input
                 type="checkbox"
                 name="isAdmin"
+                checked={isAdmin}
                 className=" mr-2 border border-black"
                 placeholder="Enter image url"
-                onChange={(e) => setIsAdmin(e.target.checked)}
+                onChange={() => setIsAdmin(!isAdmin)}
               />
               <label htmlFor="isAdmin">Is Admin </label>
             </div>
 
-            <button type="submit">Update Product</button>
+            <button type="submit">Update User</button>
           </form>
         )}
       </FormContainer>
