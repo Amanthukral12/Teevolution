@@ -8,12 +8,12 @@ import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
-    <>
+    <div className="flex flex-col justify-between">
       <Navbar />
       <Outlet />
       <Footer />
       <ToastContainer />
-    </>
+    </div>
   );
 };
 
