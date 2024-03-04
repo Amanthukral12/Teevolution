@@ -3,6 +3,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Product from "../components/Product";
 import { useGetProductsQuery } from "../slices/productApiSlice";
+import Paginate from "../components/Paginate";
 
 const ProductList = () => {
   const { pageNumber } = useParams();
@@ -24,6 +25,7 @@ const ProductList = () => {
               <Product product={product} key={product._id} />
             ))}
           </div>
+          <Paginate pages={data.pages} page={data.page} />
         </>
       )}
     </section>
