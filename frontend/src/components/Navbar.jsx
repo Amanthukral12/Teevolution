@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../slices/userApiSlice";
 import { logout } from "../slices/authSlice";
+import SearchBox from "./SearchBox";
 
 const Headers = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -29,6 +30,7 @@ const Headers = () => {
           <h1>TeeVolution</h1>
         </Link>
         <div className="flex items-center">
+          <SearchBox />
           <Link to={"/cart"} className="flex items-center mr-3">
             <FaShoppingCart className="text-lg mr-1 " />
             <p>Cart</p>
