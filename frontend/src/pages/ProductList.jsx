@@ -6,8 +6,11 @@ import { useGetProductsQuery } from "../slices/productApiSlice";
 import Paginate from "../components/Paginate";
 
 const ProductList = () => {
-  const { pageNumber } = useParams();
-  const { data, isLoading, error } = useGetProductsQuery({ pageNumber });
+  const { pageNumber, keyword } = useParams();
+  const { data, isLoading, error } = useGetProductsQuery({
+    keyword,
+    pageNumber,
+  });
 
   return (
     <section className="px-[3rem] pb-[2rem]">
@@ -25,7 +28,11 @@ const ProductList = () => {
               <Product product={product} key={product._id} />
             ))}
           </div>
-          <Paginate pages={data.pages} page={data.page} />
+          <Paginate
+            pages={data.pages}
+            page={data.page}
+            keyword={keyword ? keyword : ""}
+          />
         </>
       )}
     </section>

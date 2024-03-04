@@ -10,8 +10,9 @@ import {
 import { toast } from "react-toastify";
 import Paginate from "../../components/Paginate";
 const ProductsList = () => {
-  const { pageNumber } = useParams();
+  const { keyword, pageNumber } = useParams();
   const { data, isLoading, error, refetch } = useGetProductsQuery({
+    keyword,
     pageNumber,
   });
 
@@ -93,7 +94,12 @@ const ProductsList = () => {
               ))}
             </tbody>
           </table>
-          <Paginate pages={data.pages} page={data.page} isAdmin={true} />
+          <Paginate
+            pages={data.pages}
+            page={data.page}
+            isAdmin={true}
+            keyword={keyword ? keyword : ""}
+          />
         </>
       )}
     </>

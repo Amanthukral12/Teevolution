@@ -1,7 +1,6 @@
 import propTypes from "prop-types";
 import { Link } from "react-router-dom";
-const Paginate = ({ pages, page, isAdmin = false }) => {
-  console.log(pages);
+const Paginate = ({ pages, page, isAdmin = false, keyword }) => {
   return (
     pages > 1 && (
       <div className="flex justify-center">
@@ -10,8 +9,12 @@ const Paginate = ({ pages, page, isAdmin = false }) => {
             <Link
               to={
                 !isAdmin
-                  ? `/page/${page - 1}`
-                  : `/admin/productlist/${page - 1}`
+                  ? keyword
+                    ? `/search/${keyword}/page/${page - 1}`
+                    : `/page/${page - 1}`
+                  : keyword
+                  ? `/admin/productslist/${keyword}/page/${page - 1}`
+                  : `/admin/productslist/${page - 1}`
               }
             >
               Prev
@@ -25,8 +28,12 @@ const Paginate = ({ pages, page, isAdmin = false }) => {
             <Link
               to={
                 !isAdmin
-                  ? `/page/${page + 1}`
-                  : `/admin/productlist/${page + 1}`
+                  ? keyword
+                    ? `/search/${keyword}/page/${page + 1}`
+                    : `/page/${page + 1}`
+                  : keyword
+                  ? `/admin/productslist/${keyword}/page/${page + 1}`
+                  : `/admin/productslist/${page + 1}`
               }
             >
               Next
@@ -42,6 +49,7 @@ Paginate.propTypes = {
   pages: propTypes.number,
   page: propTypes.number,
   isAdmin: propTypes.bool,
+  keyword: propTypes.string,
 };
 
 export default Paginate;
