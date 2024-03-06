@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-
+import { FaSearch } from "react-icons/fa";
 const SearchBox = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -28,7 +28,9 @@ const SearchBox = () => {
         onChange={(e) => setKeyword(e.target.value)}
         placeholder="Search Products"
       />
-      <button type="submit">🔍</button>
+      <button type="submit">
+        <FaSearch />
+      </button>
     </form>
   );
 };
