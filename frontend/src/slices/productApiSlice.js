@@ -59,6 +59,12 @@ export const productApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 5,
     }),
+    getLatestProducts: builder.query({
+      query: () => ({
+        url: `${PRODUCTS_URL}/latest`,
+      }),
+      keepUnusedDataFor: 5,
+    }),
   }),
 });
 
@@ -71,4 +77,5 @@ export const {
   useDeleteProductMutation,
   useCreateReviewMutation,
   useGetTopProductsQuery,
+  useGetLatestProductsQuery,
 } = productApiSlice;

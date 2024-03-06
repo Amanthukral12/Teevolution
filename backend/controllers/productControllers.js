@@ -140,6 +140,19 @@ const getTopProducts = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc Get latest products
+// @route Get /api/products/latest
+// @access Public
+const getLatestProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ createdAt: "desc" }).limit(8);
+  if (products) {
+    res.status(200).json(products);
+  } else {
+    res.status(404);
+    throw new Error("Resource not found");
+  }
+});
+
 export {
   getProducts,
   getProductById,
@@ -148,4 +161,5 @@ export {
   deleteProduct,
   createProductReview,
   getTopProducts,
+  getLatestProducts,
 };
