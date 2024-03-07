@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Benefits from "../components/Benefits";
+import TopRated from "../components/TopRated";
 const Home = () => {
   const settings = {
     dots: true,
@@ -63,6 +64,12 @@ const Home = () => {
         </div>
       </div>
       <Benefits />
+      <TopRated />
+      <div className="mb-28 text-center">
+        <button className="py-4 px-10 text-white uppercase bg-[#024E82]">
+          <Link>Shop Now</Link>
+        </button>
+      </div>
     </>
   );
 };
