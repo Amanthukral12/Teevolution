@@ -6,6 +6,7 @@ import Product from "../components/Product";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import Benefits from "../components/Benefits";
 const Home = () => {
   const settings = {
     dots: true,
@@ -26,21 +27,21 @@ const Home = () => {
 
   return (
     <>
-      <Slider {...settings}>
+      <Slider {...settings} className="mx-auto w-[95vw]">
         <img
           src="/images/Banner.jpg"
           alt=""
-          className="w-full h-[30vh] lg:h-[75vh]"
+          className="w-[100vw] h-[30vh] lg:h-[75vh]"
         />
         <img
           src="/images/Banner2.jpg"
           alt=""
-          className="w-full h-[30vh] lg:h-[75vh]"
+          className="w-[100vw] h-[30vh] lg:h-[75vh]"
         />
         <img
           src="/images/Banner1.jpg"
           alt=""
-          className="w-full h-[30vh] lg:h-[75vh]"
+          className="w-[100vw] h-[30vh] lg:h-[75vh]"
         />
       </Slider>
 
@@ -61,7 +62,7 @@ const Home = () => {
           )}
         </div>
       </div>
-      {/* <ProductList /> */}
+      <Benefits />
     </>
   );
 };
