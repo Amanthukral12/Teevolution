@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import propTypes from "prop-types";
 import FormContainer from "../components/FormContainer";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +7,7 @@ import { useRegisterMutation } from "../slices/userApiSlice";
 import { setCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
 
-const Register = (props) => {
+const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

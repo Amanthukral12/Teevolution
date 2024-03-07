@@ -102,7 +102,7 @@ const Order = () => {
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message variant="Danger">{error}</Message>
+    <Message variant="Danger"> {error?.data?.message || error.error}</Message>
   ) : (
     <>
       <h1>Order {order._id}</h1>

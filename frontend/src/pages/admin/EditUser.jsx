@@ -54,7 +54,10 @@ const EditUser = () => {
         {isLoading ? (
           <Loader />
         ) : error ? (
-          <Message variant="Danger">{error}</Message>
+          <Message variant="Danger">
+            {" "}
+            {error?.data?.message || error.error}
+          </Message>
         ) : (
           <form
             className="flex flex-col"

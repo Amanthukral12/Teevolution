@@ -89,7 +89,10 @@ const EditProduct = () => {
         {isLoading ? (
           <Loader />
         ) : error ? (
-          <Message variant="Danger">{error}</Message>
+          <Message variant="Danger">
+            {" "}
+            {error?.data?.message || error.error}
+          </Message>
         ) : (
           <form
             className="flex flex-col"
@@ -122,6 +125,7 @@ const EditProduct = () => {
               value={image}
               onChange={(e) => setImage(e.target.value)}
             />
+            {loadingUpload && <Loader />}
             <input
               type="file"
               name="image"

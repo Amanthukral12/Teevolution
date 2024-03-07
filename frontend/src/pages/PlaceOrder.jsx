@@ -113,7 +113,12 @@ const PlaceOrder = () => {
                 <p className="w-1/2">Total:</p>
                 <p>₹{cart.totalPrice}</p>
               </div>
-              {error && <Message variant="Danger">{error}</Message>}
+              {error && (
+                <Message variant="Danger">
+                  {" "}
+                  {error?.data?.message || error.error}
+                </Message>
+              )}
               <button
                 disabled={cart.cartItems.length === 0}
                 onClick={placeOrderHandler}

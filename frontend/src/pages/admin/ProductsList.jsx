@@ -60,7 +60,10 @@ const ProductsList = () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant="Danger">{error}</Message>
+        <Message variant="Danger">
+          {" "}
+          {error?.data?.message || error.error}
+        </Message>
       ) : (
         <>
           <table className="mt-4 w-[90%] mx-20">

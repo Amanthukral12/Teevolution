@@ -13,7 +13,9 @@ const TopRated = () => {
         {isLoading ? (
           <Loader />
         ) : error ? (
-          <Message variant="Danger">{error}</Message>
+          <Message variant="Danger">
+            {error?.data?.message || error.error}
+          </Message>
         ) : (
           <div className="flex flex-wrap">
             {topProducts.map((product) => (

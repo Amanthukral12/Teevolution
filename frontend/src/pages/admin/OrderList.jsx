@@ -13,7 +13,10 @@ const OrderList = () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant="Danger">{error}</Message>
+        <Message variant="Danger">
+          {" "}
+          {error?.data?.message || error.error}
+        </Message>
       ) : (
         <table className="table-auto w-full">
           <thead>
