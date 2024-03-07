@@ -22,8 +22,7 @@ const ProductList = () => {
         </Message>
       ) : (
         <>
-          <h1 className="text-center py-20">New Arrivals</h1>
-          <div className="flex flex-wrap justify-evenly">
+          <div className="flex flex-wrap justify-evenly pt-10">
             {data.products.map((product) => (
               <Product product={product} key={product._id} />
             ))}

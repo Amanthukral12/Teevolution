@@ -119,7 +119,9 @@ const Headers = () => {
         <Link to={"/"}>
           <span className="font-medium px-2">Home</span>
         </Link>
-        <span className="font-medium px-2">Shop</span>
+        <span className="font-medium px-2">
+          <Link to={"/shop"}>Shop</Link>
+        </span>
         <span className="font-medium px-2">
           <Link to={"/about"}>About</Link>
         </span>

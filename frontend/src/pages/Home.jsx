@@ -67,7 +67,7 @@ const Home = () => {
       <TopRated />
       <div className="mb-28 text-center">
         <button className="py-4 px-10 text-white uppercase bg-[#024E82]">
-          <Link>Shop Now</Link>
+          <Link to={"/shop"}>Shop Now</Link>
         </button>
       </div>
     </>
