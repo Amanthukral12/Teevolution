@@ -28,3 +28,15 @@ async function getPayPalAccessToken() {
 
   return paypalData.access_token;
 }
+
+export async function checkIfNewTransaction(orderModel, paypalTransactionId) {
+  try {
+    const orders = await orderModel.find({
+      "paymentResult.id": paypalTransactionId,
+    });
+
+    return orders.length === 0;
+  } catch (err) {
+    console.error(err);
+  }
+}

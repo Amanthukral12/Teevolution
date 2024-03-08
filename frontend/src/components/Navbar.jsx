@@ -46,7 +46,7 @@ const Headers = () => {
                 <FaUser className="text-lg mr-1 " />
                 <li className="group  relative dropdown cursor-pointer text-base tracking-wide w-full">
                   <a>{userInfo.name}</a>
-                  <div className="group-hover:block dropdown-menu absolute hidden h-auto">
+                  <div className="group-hover:block dropdown-menu absolute hidden h-auto z-10">
                     <ul className="top-0 w-48 bg-white shadow px-2 py-8">
                       <li className="py-1">
                         <Link
@@ -56,7 +56,7 @@ const Headers = () => {
                           Profile
                         </Link>
                       </li>
-                      <li className="py-1">
+                      <li className="py-1 z-10">
                         <p
                           className="block text-base cursor-pointer"
                           onClick={logoutHandler}
@@ -80,7 +80,7 @@ const Headers = () => {
               <ul className="w-full flex items-center">
                 <li className="group relative dropdown cursor-pointer text-base tracking-wide">
                   <a>Admin</a>
-                  <div className="group-hover:block dropdown-menu absolute hidden h-auto">
+                  <div className="group-hover:block dropdown-menu absolute hidden h-auto z-10">
                     <ul className="top-0 w-48 bg-white shadow px-2 py-8">
                       <li className="py-1">
                         <Link
