@@ -40,3 +40,23 @@ export async function checkIfNewTransaction(orderModel, paypalTransactionId) {
     console.error(err);
   }
 }
+
+export async function verifyPayPalPayment(paypalTransactionId) {
+  const accessToken = await getPayPalAccessToken();
+  const paypalResponse = await fetch(
+    `${PAYPAL_API_URL}/v2/checkout/orders/${paypalTransactionId}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+  if (!paypalResponse.ok) throw new Error("Failed to verify payment");
+
+  const paypalData = await paypalResponse.json();
+  return {
+    verified: paypalData.status === "COMPLETED",
+    value: paypalData.purchase_units[0].amount.value,
+  };
+}
