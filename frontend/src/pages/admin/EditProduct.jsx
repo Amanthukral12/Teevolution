@@ -82,9 +82,11 @@ const EditProduct = () => {
 
   return (
     <>
-      <Link to="/admin/productslist">Go Back</Link>
+      <Link to="/admin/productslist" className="text-lg ml-20 text-blue-800">
+        Go Back
+      </Link>
       <FormContainer>
-        <h1>Edit Product</h1>
+        <h1 className="text-2xl my-5">Edit Product</h1>
         {loadingUpdate && <Loader />}
         {isLoading ? (
           <Loader />
@@ -98,29 +100,28 @@ const EditProduct = () => {
             className="flex flex-col"
             onSubmit={(e) => updateProductHandler(e)}
           >
-            <label htmlFor="name">Name </label>
             <input
               type="text"
               name="name"
-              className="my-2 border border-black"
+              className=" border-gray-400 border-b-2 py-2 pl-2 mb-2"
               placeholder="Enter name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <label htmlFor="price">Price </label>
+
             <input
               type="text"
               name="price"
-              className="my-2 border border-black"
+              className=" border-gray-400 border-b-2 py-2 pl-2 mb-2"
               placeholder="Enter price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
-            <label htmlFor="image">Image </label>
+
             <input
               type="text"
               name="image"
-              className="my-2 border border-black"
+              className=" border-gray-400 border-b-2 py-2 pl-2 mb-2"
               placeholder="Enter image url"
               value={image}
               onChange={(e) => setImage(e.target.value)}
@@ -129,46 +130,51 @@ const EditProduct = () => {
             <input
               type="file"
               name="image"
-              className="my-2 border border-black"
+              className="  py-2 pl-2 mb-2"
               onChange={uploadFileHandler}
             />
-            <label htmlFor="brand">Brand </label>
+
             <input
               type="text"
               name="brand"
-              className="my-2 border border-black"
+              className=" border-gray-400 border-b-2 py-2 pl-2 mb-2"
               placeholder="Enter Brand"
               value={brand}
               onChange={(e) => setBrand(e.target.value)}
             />
-            <label htmlFor="category">Category </label>
+
             <input
               type="text"
               name="category"
-              className="my-2 border border-black"
+              className=" border-gray-400 border-b-2 py-2 pl-2 mb-2"
               placeholder="Enter category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             />
-            <label htmlFor="countInStock">Count in Stock </label>
+
             <input
               type="number"
               name="countInStock"
-              className="my-2 border border-black"
+              className=" border-gray-400 border-b-2 py-2 pl-2 mb-2"
               placeholder="Enter count in stock"
               value={countInStock}
               onChange={(e) => setCountInStock(e.target.value)}
             />
-            <label htmlFor="description">Description </label>
+
             <input
               type="text"
               name="description"
-              className="my-2 border border-black"
+              className=" border-gray-400 border-b-2 py-2 pl-2 mb-2"
               placeholder="Enter Description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-            <button type="submit">Update Product</button>
+            <button
+              type="submit"
+              className="bg-[#1c274e] text-white rounded-md py-1 mb-2 mt-10 hover:bg-gray-400"
+            >
+              Update Product
+            </button>
           </form>
         )}
       </FormContainer>

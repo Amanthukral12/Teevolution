@@ -53,13 +53,13 @@ const Profile = () => {
   return (
     <div className="flex ml-10">
       <div className="w-1/4">
-        <h2>User Profile</h2>
+        <h2 className="text-2xl my-5">User Profile</h2>
         <form onSubmit={submitHandler} className="flex flex-col">
           <label htmlFor="name">Name </label>
           <input
             type="text"
             name="name"
-            className="my-2 border border-black"
+            className=" border-gray-400 border-b-2 py-2 pl-2 mb-2 focus:outline-none"
             placeholder="Enter name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -68,7 +68,7 @@ const Profile = () => {
           <input
             type="text"
             name="email"
-            className="my-2 border border-black"
+            className=" border-gray-400 border-b-2 py-2 pl-2 mb-2 focus:outline-none"
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -77,7 +77,7 @@ const Profile = () => {
           <input
             type="password"
             name="password"
-            className="my-2 border border-black"
+            className=" border-gray-400 border-b-2 py-2 pl-2 mb-2 focus:outline-none"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -86,12 +86,15 @@ const Profile = () => {
           <input
             type="password"
             name="confirmPassword"
-            className="my-2 border border-black"
+            className=" border-gray-400 border-b-2 py-2 pl-2 mb-2 focus:outline-none"
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          <button type="submit" className="my-2">
+          <button
+            type="submit"
+            className="bg-[#1c274e] text-white rounded-md py-1 mb-2 mt-10 hover:bg-gray-400"
+          >
             Update
           </button>
           {loadingUpdateProfile && <Loader />}
@@ -106,38 +109,38 @@ const Profile = () => {
             {error?.data?.message || error?.message}
           </Message>
         ) : (
-          <table className="table-auto w-full">
-            <thead>
+          <table className="min-w-full text-center text-sm font-light text-surface mb-10">
+            <thead className="border-b border-gray-400 font-medium ">
               <tr>
-                <th>ID</th>
-                <th>DATE</th>
-                <th>TOTAL</th>
-                <th>PAID</th>
-                <th>DELIVERED</th>
-                <th></th>
+                <th className="px-6 py-4">ID</th>
+                <th className="px-6 py-4">DATE</th>
+                <th className="px-6 py-4">TOTAL</th>
+                <th className="px-6 py-4">PAID</th>
+                <th className="px-6 py-4">DELIVERED</th>
+                <th className="px-6 py-4"></th>
               </tr>
             </thead>
             <tbody className="text-center">
               {orders.map((order) => (
-                <tr key={order._id}>
-                  <td>{order._id}</td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
-                  <td>{order.totalPrice}</td>
-                  <td>
+                <tr key={order._id} className="py-4 odd:bg-slate-300">
+                  <td className="py-4">{order._id}</td>
+                  <td className="py-4">{order.createdAt.substring(0, 10)}</td>
+                  <td className="py-4">{order.totalPrice}</td>
+                  <td className="py-4">
                     {order.isPaid ? (
                       order.paidAt.substring(0, 10)
                     ) : (
                       <FaTimes className="text-red-500 mx-auto" />
                     )}
                   </td>
-                  <td>
+                  <td className="py-4">
                     {order.isDelivered ? (
                       order.deliveredAt.substring(0, 10)
                     ) : (
                       <FaTimes className="text-red-500 mx-auto" />
                     )}
                   </td>
-                  <td>
+                  <td className="py-4">
                     <Link to={`/order/${order._id}`}>
                       <button>Details</button>
                     </Link>

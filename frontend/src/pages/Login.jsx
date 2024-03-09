@@ -37,32 +37,40 @@ const Login = () => {
   };
   return (
     <FormContainer>
-      <h1>My Account</h1>
-      <form onSubmit={submitHandler} className="flex flex-col">
-        <label htmlFor="email">Email</label>
+      <h1 className="text-2xl my-5">My Account</h1>
+      <form onSubmit={submitHandler} className="flex flex-col w-3/5">
         <input
           type="email"
           name="email"
           value={email}
           placeholder="Enter your Email"
+          className=" border-gray-400 border-b-2 py-2 pl-2 mb-2 focus:outline-none"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="password">Password</label>
+
         <input
           type="password"
           name="password"
           value={password}
           placeholder="Enter your password"
+          className=" border-gray-400 border-b-2 py-2 pl-2 mb-4 focus:outline-none"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" disabled={isLoading}>
+        <button
+          type="submit"
+          className="bg-[#1c274e] text-white rounded-md py-1 mb-2 mt-10 hover:bg-gray-400"
+          disabled={isLoading}
+        >
           Sign In
         </button>
         {isLoading && <Loader />}
-        <div>
+        <div className="mb-20">
           <p>
             New Customer?{" "}
-            <Link to={redirect ? `/signup?redirect=${redirect}` : "/signup"}>
+            <Link
+              to={redirect ? `/signup?redirect=${redirect}` : "/signup"}
+              className=" text-blue-800"
+            >
               Register
             </Link>
           </p>

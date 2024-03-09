@@ -47,9 +47,11 @@ const EditUser = () => {
 
   return (
     <>
-      <Link to="/admin/userlist">Go Back</Link>
+      <Link to="/admin/userlist" className="text-lg ml-20 text-blue-800">
+        Go Back
+      </Link>
       <FormContainer>
-        <h1>Edit User</h1>
+        <h1 className="text-2xl my-5">Edit User</h1>
         {loadingUpdate && <Loader />}
         {isLoading ? (
           <Loader />
@@ -60,23 +62,22 @@ const EditUser = () => {
           </Message>
         ) : (
           <form
-            className="flex flex-col"
+            className="flex flex-col w-3/5"
             onSubmit={(e) => updateUserHandler(e)}
           >
-            <label htmlFor="name">Name </label>
             <input
               type="text"
               name="name"
-              className="my-2 border border-black"
+              className=" border-gray-400 border-b-2 py-2 pl-2 mb-2"
               placeholder="Enter name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <label htmlFor="email">Email </label>
+
             <input
               type="email"
               name="email"
-              className="my-2 border border-black"
+              className=" border-gray-400 border-b-2 py-2 pl-2 mb-2"
               placeholder="Enter email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -86,14 +87,19 @@ const EditUser = () => {
                 type="checkbox"
                 name="isAdmin"
                 checked={isAdmin}
-                className=" mr-2 border border-black"
+                className=" mr-2"
                 placeholder="Enter image url"
                 onChange={() => setIsAdmin(!isAdmin)}
               />
               <label htmlFor="isAdmin">Is Admin </label>
             </div>
 
-            <button type="submit">Update User</button>
+            <button
+              type="submit"
+              className="bg-[#1c274e] text-white rounded-md py-1 mb-2 mt-10 hover:bg-gray-400"
+            >
+              Update User
+            </button>
           </form>
         )}
       </FormContainer>
