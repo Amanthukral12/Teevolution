@@ -101,7 +101,7 @@ const Profile = () => {
         </form>
       </div>
       <div className="w-3/4 ml-10 mr-10">
-        <h2>My Orders</h2>
+        <h2 className="text-2xl my-5">My Orders</h2>
         {isLoading ? (
           <Loader />
         ) : error ? (

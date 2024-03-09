@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
   return (
     pages > 1 && (
-      <div className="flex justify-center">
+      <div className="flex justify-center mb-10">
         {page > 1 && (
           <button className="px-2">
             <Link

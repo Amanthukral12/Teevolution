@@ -24,7 +24,7 @@ const UserList = () => {
 
   return (
     <>
-      <h1>Users</h1>
+      <h1 className="text-2xl my-5 mx-20">Users</h1>
       {loadingDelete && <Loader />}
       {isLoading ? (
         <Loader />
@@ -34,26 +34,26 @@ const UserList = () => {
           {error?.data?.message || error.error}
         </Message>
       ) : (
-        <table className="table-auto w-full">
-          <thead>
+        <table className=" w-[90%] mx-10 text-center text-sm font-light text-surface mb-10">
+          <thead className="border-b border-gray-400 font-medium ">
             <tr>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>EMAIL</th>
-              <th>ADMIN</th>
-              <th></th>
+              <th className="px-6 py-4">ID</th>
+              <th className="px-6 py-4">NAME</th>
+              <th className="px-6 py-4">EMAIL</th>
+              <th className="px-6 py-4">ADMIN</th>
+              <th className="px-6 py-4"></th>
             </tr>
           </thead>
           <tbody className="text-center">
             {users.map((user) => (
-              <tr key={user._id}>
-                <td>{user._id}</td>
-                <td>{user.name}</td>
-                <td>
+              <tr key={user._id} className="py-4 odd:bg-slate-300">
+                <td className="py-4">{user._id}</td>
+                <td className="py-4">{user.name}</td>
+                <td className="py-4">
                   <a href={`mailto:${user.email}`}>{user.email}</a>
                 </td>
 
-                <td>
+                <td className="py-4">
                   {user.isAdmin ? (
                     <FaCheck className="text-green-500 mx-auto" />
                   ) : (
@@ -61,17 +61,12 @@ const UserList = () => {
                   )}
                 </td>
 
-                <td>
+                <td className="flex py-4">
                   <Link to={`/admin/user/${user._id}/edit`}>
-                    <button>
-                      <FaEdit />
-                    </button>
+                    <FaEdit className="mx-2 text-lg" />
                   </Link>
-                  <button
-                    className="ml-2"
-                    onClick={() => deleteHandler(user._id)}
-                  >
-                    <FaTrash />
+                  <button onClick={() => deleteHandler(user._id)}>
+                    <FaTrash className="text-lg" />
                   </button>
                 </td>
               </tr>

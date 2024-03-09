@@ -48,10 +48,13 @@ const ProductsList = () => {
   return (
     <>
       <div className="flex mx-20 justify-between items-center">
-        <h1>Products</h1>
+        <h1 className="text-2xl my-5">Products</h1>
         <div>
-          <button className="flex items-center" onClick={createProductHandler}>
-            <FaEdit /> Create Product
+          <button
+            className="flex items-center text-lg"
+            onClick={createProductHandler}
+          >
+            <FaEdit className="mr-2" /> Create Product
           </button>
         </div>
       </div>
@@ -66,31 +69,31 @@ const ProductsList = () => {
         </Message>
       ) : (
         <>
-          <table className="mt-4 w-[90%] mx-20">
-            <thead>
-              <tr className="text-left">
-                <th>ID</th>
-                <th>NAME</th>
-                <th>PRICE</th>
-                <th>CATEGORY</th>
-                <th>BRAND</th>
-                <th></th>
+          <table className="mt-4 w-[90%] mx-20 text-center text-sm font-light text-surface">
+            <thead className="border-b border-gray-400 font-medium ">
+              <tr>
+                <th className="px-6 py-4">ID</th>
+                <th className="px-6 py-4">NAME</th>
+                <th className="px-6 py-4">PRICE</th>
+                <th className="px-6 py-4">CATEGORY</th>
+                <th className="px-6 py-4">BRAND</th>
+                <th className="px-6 py-4"></th>
               </tr>
             </thead>
-            <tbody className="text-left">
+            <tbody className="text-center">
               {data.products.map((product) => (
-                <tr key={product._id}>
-                  <td>{product._id}</td>
-                  <td>{product.name}</td>
-                  <td>{product.price}</td>
-                  <td>{product.category}</td>
-                  <td>{product.brand}</td>
-                  <td className="flex">
+                <tr key={product._id} className="py-4 odd:bg-slate-300">
+                  <td className="py-4">{product._id}</td>
+                  <td className="py-4">{product.name}</td>
+                  <td className="py-4">{product.price}</td>
+                  <td className="py-4">{product.category}</td>
+                  <td className="py-4">{product.brand}</td>
+                  <td className="flex py-4">
                     <Link to={`/admin/product/${product._id}/edit`}>
-                      <FaEdit className="mx-2" />
+                      <FaEdit className="mx-2 text-lg" />
                     </Link>
                     <button onClick={() => deleteHandler(product._id)}>
-                      <FaTrash />
+                      <FaTrash className="text-lg" />
                     </button>
                   </td>
                 </tr>
