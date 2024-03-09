@@ -3,24 +3,20 @@ function addDecimals(num) {
 }
 
 export function calcPrices(orderItems) {
-  const itemsPrice = addDecimals(
-    orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+  const itemsPrice = orderItems.reduce(
+    (acc, item) => acc + (item.price * 100 * item.qty) / 100,
+    0
   );
+  const shippingPrice = itemsPrice > 500 ? 0 : 10;
 
-  let shippingPrice = 0;
+  const taxPrice = 0.18 * itemsPrice;
 
-  if (itemsPrice === "0.00") {
-    shippingPrice = 0;
-  } else {
-    shippingPrice = addDecimals(state.itemsPrice > 100 ? 0 : 10);
-  }
+  const totalPrice = itemsPrice + shippingPrice + taxPrice;
 
-  const taxPrice = addDecimals(Number((0.18 * itemsPrice).toFixed(2)));
-
-  const totalPrice = (
-    Number(itemsPrice) +
-    Number(shippingPrice) +
-    Number(taxPrice)
-  ).toFixed(2);
-  return { itemsPrice, shippingPrice, taxPrice, totalPrice };
+  return {
+    itemsPrice: addDecimals(itemsPrice),
+    shippingPrice: addDecimals(shippingPrice),
+    taxPrice: addDecimals(taxPrice),
+    totalPrice: addDecimals(totalPrice),
+  };
 }

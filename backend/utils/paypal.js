@@ -44,7 +44,7 @@ export async function checkIfNewTransaction(orderModel, paypalTransactionId) {
 export async function verifyPayPalPayment(paypalTransactionId) {
   const accessToken = await getPayPalAccessToken();
   const paypalResponse = await fetch(
-    `${PAYPAL_API_URL}/v2/checkout/orders/${paypalTransactionId}`,
+    `${process.env.PAYPAL_API_URL}/v2/checkout/orders/${paypalTransactionId}`,
     {
       headers: {
         "Content-Type": "application/json",
