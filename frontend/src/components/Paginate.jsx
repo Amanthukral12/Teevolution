@@ -5,7 +5,7 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
     pages > 1 && (
       <div className="flex justify-center mb-10">
         {page > 1 && (
-          <button className="px-2">
+          <button className="mr-2 px-6 rounded-md bg-[#024E82] py-1 text-white hover:bg-gray-400">
             <Link
               to={
                 !isAdmin
@@ -22,9 +22,11 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
           </button>
         )}
 
-        <p>{page}</p>
+        <p className=" border border-[#024E82] px-2 rounded-md mr-4 hover:bg-[#024E82] hover:text-white hover:border-white">
+          {page}
+        </p>
         {page < pages && (
-          <button className="px-2">
+          <button className="mr-2 px-6 rounded-md bg-[#024E82] py-1 text-white hover:bg-gray-400">
             <Link
               to={
                 !isAdmin
