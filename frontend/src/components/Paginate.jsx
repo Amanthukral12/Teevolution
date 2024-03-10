@@ -22,7 +22,7 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
           </button>
         )}
 
-        <p className=" border border-[#024E82] px-2 rounded-md mr-4 hover:bg-[#024E82] hover:text-white hover:border-white">
+        <p className=" border border-[#024E82] text-[#024E82] px-2 rounded-md mr-4 hover:bg-[#024E82] hover:text-white hover:border-white">
           {page}
         </p>
         {page < pages && (

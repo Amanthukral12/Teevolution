@@ -76,7 +76,7 @@ const Cart = () => {
               ))}
             </tbody>
           </table>
-          <div className="mx-4 md:mx-20 w-full md:w-1/4">
+          <div className="mx-4 mb-10 md:mx-20 w-full md:w-1/4">
             <h1 className="text-2xl my-5">Cart Totals</h1>
 
             <p className="flex mr-20 md:mr-0 justify-between md:justify-between">
