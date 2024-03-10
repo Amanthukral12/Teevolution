@@ -96,7 +96,7 @@ const EditUser = () => {
 
             <button
               type="submit"
-              className="bg-[#1c274e] text-white rounded-md py-1 mb-2 mt-10 hover:bg-gray-400"
+              className="bg-[#024E82] text-white rounded-md py-1 mb-2 mt-10 hover:bg-gray-400"
             >
               Update User
             </button>

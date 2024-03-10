@@ -24,10 +24,10 @@ const Payment = () => {
   };
   return (
     <FormContainer>
-      <CheckoutSteps step3 />
-      <h1>Payment Method</h1>
-      <form className="flex flex-col" onSubmit={submitHandler}>
-        <p>Select Method</p>
+      <CheckoutSteps step1 step2 step3 />
+      <h1 className="text-2xl my-5">Payment Method</h1>
+      <form className="flex flex-col w-3/5" onSubmit={submitHandler}>
+        <p className="text-lg">Select Method</p>
         <div>
           <input
             type="radio"
@@ -38,10 +38,17 @@ const Payment = () => {
             checked
             onChange={(e) => setPaymentMethod(e.target.value)}
           />
-          <label htmlFor="PayPal">PayPal</label>
+          <label htmlFor="PayPal" className=" font-medium text-lg">
+            PayPal
+          </label>
         </div>
 
-        <button type="submit">Continue</button>
+        <button
+          type="submit"
+          className="bg-[#024E82] text-white rounded-md py-1 mb-2 mt-10 hover:bg-gray-400"
+        >
+          Continue
+        </button>
       </form>
     </FormContainer>
   );
