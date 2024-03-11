@@ -85,7 +85,7 @@ const ProductsList = () => {
                 <tr key={product._id} className="py-4 odd:bg-slate-300">
                   <td className="py-4">{product._id}</td>
                   <td className="py-4">{product.name}</td>
-                  <td className="py-4">{product.price}</td>
+                  <td className="py-4">${product.price}</td>
                   <td className="py-4">{product.category}</td>
                   <td className="py-4">{product.brand}</td>
                   <td className="flex py-4">

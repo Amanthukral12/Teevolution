@@ -85,7 +85,7 @@ const PlaceOrder = () => {
                         <Link to={`/product/${item._id}`}>{item.name}</Link>
                       </td>
                       <td className="py-4">
-                        {item.qty} x ₹{item.price} = ₹{item.qty * item.price}
+                        {item.qty} x ${item.price} = ${item.qty * item.price}
                       </td>
                     </tr>
                   ))}
@@ -98,19 +98,19 @@ const PlaceOrder = () => {
           <h2 className="text-2xl my-5">Order Summary</h2>
           <div className="flex">
             <p className="w-1/2">Items:</p>
-            <p>₹{cart.itemsPrice}</p>
+            <p>${cart.itemsPrice}</p>
           </div>
           <div className="flex">
             <p className="w-1/2">Shipping Price:</p>
-            <p>₹{cart.shippingPrice}</p>
+            <p>${cart.shippingPrice}</p>
           </div>
           <div className="flex">
             <p className="w-1/2">Tax:</p>
-            <p>₹{cart.taxPrice}</p>
+            <p>${cart.taxPrice}</p>
           </div>
           <div className="flex">
             <p className="w-1/2">Total:</p>
-            <p>₹{cart.totalPrice}</p>
+            <p>${cart.totalPrice}</p>
           </div>
           {error && (
             <Message variant="Danger">

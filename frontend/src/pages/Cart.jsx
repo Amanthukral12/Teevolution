@@ -80,7 +80,7 @@ const Cart = () => {
             <h1 className="text-2xl my-5">Cart Totals</h1>
 
             <p className="flex mr-20 md:mr-0 justify-between md:justify-between">
-              <span>Subtotal</span> ₹
+              <span>Subtotal</span> $
               {cartItems
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
                 .toFixed(2)}

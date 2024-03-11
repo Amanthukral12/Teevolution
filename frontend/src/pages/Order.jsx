@@ -166,7 +166,7 @@ const Order = () => {
                     <Link to={`/product/${item._id}`}>{item.name}</Link>
                   </td>
                   <td className="py-4">
-                    {item.qty} x ₹{item.price} = ₹{item.qty * item.price}
+                    {item.qty} x ${item.price} = ${item.qty * item.price}
                   </td>
                 </tr>
               ))}
@@ -177,19 +177,19 @@ const Order = () => {
           <h2 className="text-2xl my-5">Order Summary</h2>
           <div className="flex">
             <p className="w-1/2">Items:</p>
-            <p>₹{order.itemsPrice}</p>
+            <p>${order.itemsPrice}</p>
           </div>
           <div className="flex">
             <p className="w-1/2">Shipping Price:</p>
-            <p>₹{order.shippingPrice}</p>
+            <p>${order.shippingPrice}</p>
           </div>
           <div className="flex">
             <p className="w-1/2">Tax:</p>
-            <p>₹{order.taxPrice}</p>
+            <p>${order.taxPrice}</p>
           </div>
           <div className="flex mb-6">
             <p className="w-1/2">Total:</p>
-            <p>₹{order.totalPrice}</p>
+            <p>${order.totalPrice}</p>
           </div>
           {!order.isPaid && (
             <div>
