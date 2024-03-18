@@ -22,7 +22,7 @@ const ProductList = () => {
         </Message>
       ) : (
         <>
-          <div className="flex flex-wrap justify-evenly pt-10">
+          <div className="flex flex-wrap pt-10">
             {data.products.map((product) => (
               <Product product={product} key={product._id} />
             ))}

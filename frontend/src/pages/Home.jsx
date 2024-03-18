@@ -49,7 +49,7 @@ const Home = () => {
       <div className="text-center mt-8">
         <h1 className="text-2xl font-semibold mb-4">Discover NEW Arrivals</h1>
         <h4 className=" text-gray-600 mb-10">Recently added tshirts!</h4>
-        <div className="mx-auto w-[90%]">
+        <div className="mx-auto w-[95%]">
           {isLoading ? (
             <Loader />
           ) : error ? (

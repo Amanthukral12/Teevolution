@@ -124,9 +124,6 @@ const Headers = () => {
         <span className="font-medium px-2">
           <Link to={"/shop"}>Shop</Link>
         </span>
-        <span className="font-medium px-2">
-          <Link to={"/about"}>About</Link>
-        </span>
       </div>
     </header>
   );

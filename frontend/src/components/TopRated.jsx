@@ -9,7 +9,7 @@ const TopRated = () => {
     <div className="text-center mt-8 mb-10">
       <h1 className="text-2xl font-semibold mb-4">Best Rated</h1>
       <h4 className=" text-gray-600 mb-10">Browse our best rated products</h4>
-      <div className="mx-auto w-[90%]">
+      <div className="mx-auto w-[95%]">
         {isLoading ? (
           <Loader />
         ) : error ? (
