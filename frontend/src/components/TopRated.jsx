@@ -17,7 +17,7 @@ const TopRated = () => {
             {error?.data?.message || error.error}
           </Message>
         ) : (
-          <div className="flex flex-wrap">
+          <div className="flex flex-col justify-center items-center md:flex md:flex-row md:flex-wrap">
             {topProducts.map((product) => (
               <Product product={product} key={product._id} />
             ))}

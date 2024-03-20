@@ -12,7 +12,7 @@ const SearchBox = () => {
     if (keyword && location.pathname.includes("/admin/productslist")) {
       navigate(`/admin/productslist/${keyword}`);
     } else if (keyword) {
-      navigate(`/search/${keyword}`);
+      navigate(`/shop/search/${keyword}`);
     } else {
       navigate("/");
     }

@@ -58,7 +58,7 @@ const Home = () => {
               {error?.data?.message || error.error}
             </Message>
           ) : (
-            <div className="flex flex-wrap">
+            <div className="flex flex-col justify-center items-center md:flex md:flex-row md:justify-normal md:flex-wrap ">
               {latestProducts.map((product) => (
                 <Product product={product} key={product._id} />
               ))}
@@ -68,7 +68,7 @@ const Home = () => {
       </div>
       <Benefits />
       <TopRated />
-      <div className="mb-28 text-center">
+      <div className="mb-32 text-center">
         <button className="py-4 px-10 text-white uppercase bg-[#024E82]">
           <Link to={"/shop"}>Shop Now</Link>
         </button>

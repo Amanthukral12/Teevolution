@@ -4,8 +4,8 @@ import { FaArrowRotateLeft } from "react-icons/fa6";
 import { FaFingerprint } from "react-icons/fa";
 const Benefits = () => {
   return (
-    <div className=" mt-10 mb-10 w-[90%] mx-auto flex justify-evenly">
-      <div className="flex w-1/5">
+    <div className=" mt-10 mb-10 w-full md:w-[90%] mx-auto flex flex-col justify-center items-center md:flex md:flex-row md:justify-evenly">
+      <div className="flex w-[90%] my-2 md:w-1/5 ">
         <FaTruckFast className="text-2xl mr-2" />
         <div className="ml-2 mr-6">
           <p className=" font-bold text-sm mb-2">FREE SHIPPING</p>
@@ -14,7 +14,7 @@ const Benefits = () => {
           </p>
         </div>
       </div>
-      <div className="flex w-1/5 ">
+      <div className="flex w-[90%] my-2 md:w-1/5 ">
         <HiSupport className="text-2xl mr-2" />
         <div className="ml-2 mr-6">
           <p className=" font-bold text-sm mb-2">SUPPORT 24/7</p>
@@ -23,7 +23,7 @@ const Benefits = () => {
           </p>
         </div>
       </div>
-      <div className="flex w-1/5 ">
+      <div className="flex w-[90%] my-2 md:w-1/5 ">
         <FaArrowRotateLeft className="text-2xl mr-2" />
         <div className="ml-2 mr-6">
           <p className=" font-bold text-sm mb-2">30 DAYS RETURN</p>
@@ -32,7 +32,7 @@ const Benefits = () => {
           </p>
         </div>
       </div>
-      <div className="flex w-1/5 ">
+      <div className="flex w-[90%] my-2 md:w-1/5 ">
         <FaFingerprint className="text-2xl mr-2" />
         <div className="ml-2 mr-6">
           <p className=" font-bold text-sm mb-2">100% PAYMENT SECURE</p>

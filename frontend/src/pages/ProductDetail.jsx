@@ -61,7 +61,7 @@ const ProductDetail = () => {
           </Message>
         ) : (
           <>
-            <div className="flex flex-col items-center xl:flex-row mx-4 xl:mx-64">
+            <div className="flex flex-col items-center xl:flex-row xl:items-start mx-4 xl:mx-64">
               <div className="w-full md:w-1/2">
                 <img
                   src={product.image}
@@ -114,13 +114,13 @@ const ProductDetail = () => {
                 <p>Categories: {product.category}</p>
               </div>
             </div>
-            <div className=" mt-8 mb-10 mx-4 lg:mx-72">
-              <h2 className=" font-semibold text-2xl">Reviews</h2>
+            <div className=" mt-8 mb-32 mx-4 lg:mx-72">
+              <h2 className=" font-semibold text-2xl mb-1">Reviews</h2>
               {product.reviews.length === 0 && (
                 <Message variant="Info">No reviews</Message>
               )}
 
-              <div className=" px-2 rounded-sm">
+              <div className="rounded-sm">
                 <h2 className="font-medium">Write a Customer Review</h2>
                 {loadingReview && <Loader />}
                 {userInfo ? (
